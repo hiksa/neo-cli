@@ -6,6 +6,7 @@ using Neo.Implementations.Wallets.NEP6;
 using Neo.IO;
 using Neo.IO.Json;
 using Neo.Network;
+using Neo.Network.Monitor;
 using Neo.Network.Payloads;
 using Neo.Network.RPC;
 using Neo.Services;
@@ -31,6 +32,7 @@ namespace Neo.Shell
         private const string PeerStatePath = "peers.dat";
 
         private RpcServerWithWallet rpc;
+        private MonitorServerWithWallet monitor;
         private ConsensusWithLog consensus;
 
         protected LocalNode LocalNode { get; private set; }
@@ -899,7 +901,7 @@ namespace Neo.Shell
 
         protected internal override void OnStart(string[] args)
         {
-            bool useRPC = false, nopeers = false, useLog = false;
+            bool useRPC = false, nopeers = false, useLog = false, useMonitor = false;
             for (int i = 0; i < args.Length; i++)
                 switch (args[i])
                 {
@@ -907,6 +909,11 @@ namespace Neo.Shell
                     case "--rpc":
                     case "-r":
                         useRPC = true;
+                        break;
+                    case "/monitor":
+                    case "--monitor":
+                    case "-m":
+                        useMonitor = true;
                         break;
                     case "--nopeers":
                         nopeers = true;
@@ -991,6 +998,12 @@ namespace Neo.Shell
                 {
                     rpc = new RpcServerWithWallet(LocalNode);
                     rpc.Start(Settings.Default.RPC.Port, Settings.Default.RPC.SslCert, Settings.Default.RPC.SslCertPassword);
+                }
+
+                if (useMonitor)
+                {
+                    monitor = new MonitorServerWithWallet(LocalNode, Settings.Default.Monitor.NodeName, Settings.Default.Monitor.NodeType);
+                    monitor.Start(Settings.Default.Monitor.Port);
                 }
             });
         }
