@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "neo-cli", "neo-cli\neo-cli.csproj", "{900CA179-AEF0-43F3-9833-5DB060272D8E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "neo", "..\neo\neo\neo.csproj", "{FEA21828-2C69-452A-B474-924600056D15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "neo", "..\neo\neo\neo.csproj", "{6E070859-756D-4C6E-9244-4FB1ECB45FDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,15 +17,15 @@ Global
 		{900CA179-AEF0-43F3-9833-5DB060272D8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{900CA179-AEF0-43F3-9833-5DB060272D8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{900CA179-AEF0-43F3-9833-5DB060272D8E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FEA21828-2C69-452A-B474-924600056D15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FEA21828-2C69-452A-B474-924600056D15}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FEA21828-2C69-452A-B474-924600056D15}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FEA21828-2C69-452A-B474-924600056D15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E070859-756D-4C6E-9244-4FB1ECB45FDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E070859-756D-4C6E-9244-4FB1ECB45FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E070859-756D-4C6E-9244-4FB1ECB45FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E070859-756D-4C6E-9244-4FB1ECB45FDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {36101043-82CD-4B35-929B-4F86A6B51D08}
+		SolutionGuid = {18D06D23-B652-4E53-BDD6-992B6694FF6B}
 	EndGlobalSection
 EndGlobal

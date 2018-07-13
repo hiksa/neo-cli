@@ -6,12 +6,12 @@ using Neo.Network.Monitoring.Payloads;
 
 namespace Neo.Network.Monitor
 {
-    internal class MonitoringManagerWithWallet : MonitoringManager
+    internal class MonitoringDispatcherWithWallet : MonitoringDispatcher
     {
         private readonly string nodeName;
         private readonly string nodeType;
 
-        public MonitoringManagerWithWallet(LocalNode localNode, string name, string type)
+        public MonitoringDispatcherWithWallet(LocalNode localNode, string name, string type)
             : base(localNode)
         {
             this.nodeName = name;

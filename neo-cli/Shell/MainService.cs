@@ -973,7 +973,7 @@ namespace Neo.Shell
                     }
                 }
 
-                var monitorServer = new MonitoringManagerWithWallet(LocalNode, Settings.Default.Monitor.NodeName, Settings.Default.Monitor.NodeType);
+                var monitorServer = new MonitoringDispatcherWithWallet(LocalNode, Settings.Default.Monitor.NodeName, Settings.Default.Monitor.NodeType);
                 LocalNode.MonitoringManager = monitorServer;
 
                 LocalNode.Start(Settings.Default.P2P.Port, Settings.Default.P2P.WsPort);
