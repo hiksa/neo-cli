@@ -8,6 +8,7 @@ namespace Neo
         public PathsSettings Paths { get; }
         public P2PSettings P2P { get; }
         public RPCSettings RPC { get; }
+        public MonitorSettings Monitor { get; }
         public UnlockWalletSettings UnlockWallet { get; set; }
 
         public static Settings Default { get; }
@@ -23,6 +24,7 @@ namespace Neo
             this.Paths = new PathsSettings(section.GetSection("Paths"));
             this.P2P = new P2PSettings(section.GetSection("P2P"));
             this.RPC = new RPCSettings(section.GetSection("RPC"));
+            this.Monitor = new MonitorSettings(section.GetSection("Monitor"));
             this.UnlockWallet = new UnlockWalletSettings(section.GetSection("UnlockWallet"));
         }
     }
@@ -62,6 +64,18 @@ namespace Neo
             this.Port = ushort.Parse(section.GetSection("Port").Value);
             this.SslCert = section.GetSection("SslCert").Value;
             this.SslCertPassword = section.GetSection("SslCertPassword").Value;
+        }
+    }
+
+    internal class MonitorSettings
+    {
+        public string NodeName { get; }
+        public string NodeType { get; }
+
+        public MonitorSettings(IConfigurationSection section)
+        {
+            this.NodeName = section.GetSection("NodeName").Value;
+            this.NodeType = section.GetSection("NodeType").Value;
         }
     }
 

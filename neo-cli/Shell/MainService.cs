@@ -6,6 +6,7 @@ using Neo.Implementations.Wallets.NEP6;
 using Neo.IO;
 using Neo.IO.Json;
 using Neo.Network;
+using Neo.Network.Monitor;
 using Neo.Network.Payloads;
 using Neo.Network.RPC;
 using Neo.Services;
@@ -142,7 +143,7 @@ namespace Neo.Shell
             return true;
         }
 
-        private bool OnRelayCommand(string [] args)
+        private bool OnRelayCommand(string[] args)
         {
             if (args.Length < 2)
             {
@@ -837,7 +838,7 @@ namespace Neo.Shell
             RemoteNode[] nodes = LocalNode.GetRemoteNodes();
             for (int i = 0; i < nodes.Length; i++)
             {
-                Console.WriteLine($"{nodes[i].RemoteEndpoint.Address} port:{nodes[i].RemoteEndpoint.Port} listen:{nodes[i].ListenerEndpoint?.Port ?? 0} height:{nodes[i].Version?.StartHeight ?? 0} [{i + 1}/{nodes.Length}]");
+                Console.WriteLine($"{nodes[i].Connection.RemoteEndpoint.Address} port:{nodes[i].Connection.RemoteEndpoint.Port} listen:{nodes[i].ListenerEndpoint?.Port ?? 0} height:{nodes[i].Version?.StartHeight ?? 0} [{i + 1}/{nodes.Length}]");
             }
             return true;
         }
@@ -971,6 +972,10 @@ namespace Neo.Shell
                         }
                     }
                 }
+
+                var monitorServer = new MonitoringManagerWithWallet(LocalNode, Settings.Default.Monitor.NodeName, Settings.Default.Monitor.NodeType);
+                LocalNode.MonitoringManager = monitorServer;
+
                 LocalNode.Start(Settings.Default.P2P.Port, Settings.Default.P2P.WsPort);
                 if (Settings.Default.UnlockWallet.IsActive)
                 {

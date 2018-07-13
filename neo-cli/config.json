@@ -13,6 +13,10 @@
       "SslCert": "",
       "SslCertPassword": ""
     },
+    "Monitor": {
+      "NodeName": "Name of the Node",
+      "NodeType": "RPC"
+    },
     "UnlockWallet": {
       "Path": "",
       "Password": "",
